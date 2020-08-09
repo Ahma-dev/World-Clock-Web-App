@@ -9,6 +9,9 @@ This project is to enable users to generate time for any city/timezone of their 
   a request is sent to the [API](https://timezonedb.com/) which returns an object containing needed time data including current time, country, timezone abbreviation amongst others. 
   this data generated is then parsed to desired format and displayedd to the user.
 
+## Requirements not covered in submition 
+We couldn't get any API to generate timezone for different cities(i guess that's because even some cities aren't documented), so we used a closer one, a timezone API that returns all timezones in the world. 
+
 ## Issues faced while completing this task
 We couldn't figure out how to split task amongst ourselves, this was my fault though, this is my first internship and also the first time leading a team so i'm pretty new to the process
 
