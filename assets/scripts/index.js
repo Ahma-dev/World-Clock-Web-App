@@ -1,3 +1,20 @@
+// Typewriter Effect
+// var i = 0;
+// var txt = 'WORLD CLOCK WEB APP'
+// var speed = 50;
+
+// function typeWriter() {
+//   if (i<txt.length) {
+//     document.getElementsByTagName('h1').innerHTML += txt.charAt(i);
+//      i++;
+//      setTimeout(typeWriter, speed);
+
+
+//   }
+// }
+
+
+
 const addedTimeList = {};
 let countries = {};
 
@@ -39,7 +56,10 @@ class RenderAddedItems {
     let hour = parseInt(timeList[0]);
     let minute = parseInt(timeList[1]);
     let sec = parseInt(timeList[2]);
+    console.log(timeList)
+
     // console.log(timeList)
+
     // console.log(this.sec)
     this.min.textContent = minute.pad(2);
 
@@ -143,14 +163,14 @@ class UpdateTime {
 
   updateSecHandler() {
     this.sec++;
-     
+
     if (this.sec >= 60 && !adjustedMin) {
       this.sec = 1;
       this.min++;
       this.updateMin()
       this.minDOM.textContent = this.min.pad(2);
       adjustedMin = true
-      clearInterval(this.secInterval); 
+      clearInterval(this.secInterval);
     }
   }
 
@@ -189,9 +209,13 @@ class EventListener {
       event.preventDefault();
       const userInput = searchInput.value;
       this.searchIconHandler(userInput);
+      searchInput.value = "";
     });
   }
 
+
+
+// >>>>>>> master
   static searchInputHandler(event, EventListener) {
     // calls searchIconHandler when 'Enter' key is pressed
     if (event.key === "Enter") {
@@ -239,6 +263,15 @@ const getTimezones = () => {
     });
 };
 
+const changeDateFormat = (date) => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+      'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      const days = ['Sun','Mon', 'Tue', 'Wed','Thur','Fri','Sat'] 
+      const formartedDate = `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}`
+      return formartedDate
+}
+
+
 const generateTimezoneData = (timezone) => {
   fetch(
     `https://cors-anywhere.herokuapp.com/http://api.timezonedb.com/v2.1/get-time-zone?key=GQ7OZD3IEZN9&format=json&by=zone&zone=${timezone}`
@@ -250,14 +283,28 @@ const generateTimezoneData = (timezone) => {
       console.log(data);
       const country = data.countryName;
 
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+      'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      const days = ['Sun','Mon', 'Tue', 'Wed','Thur','Fri','Sat']
       const timezone = data.abbreviation;
-      const date = data.formatted.slice(0, 10);
+      const date = new Date(data.formatted.slice(0, 10));
+      const formartedDate = changeDateFormat(date)
+
+
+//       const timezone = data.abbreviation;
+//       const date = data.formatted.slice(0, 10);
+
       let times = data.formatted;
       console.log(times);
       // console.log('h1')
       const time = data.formatted.slice(11, 19);
       const zoneName = data.zoneName;
-      const timeData = new TimeData(country, time, date, timezone);
+// <<<<<<< master
+      
+      const timeData = new TimeData(country, time, formartedDate, timezone);
+// =======
+//       const timeData = new TimeData(country, time, date, timezone);
+// >>>>>>> master
       // console.log('h2')
       const rederAddedItem = new RenderAddedItems();
       rederAddedItem.renderList(timeData, zoneName);
@@ -270,13 +317,13 @@ const generateTimezoneData = (timezone) => {
 const validateUserInput = (userInput) => {
   if (availableTimezones.includes(userInput)) {
     if (addedTimeList.hasOwnProperty(userInput)) {
-      alert("Country already added :)");
+      swal ( "Oops!" ,  "Country already added! Try again." ,  "error" )
       return;
     }
     console.log(userInput);
     generateTimezoneData(userInput); //parse in country code
   } else {
-    alert("Country format wrong!");
+      swal ( "Oops!" ,  "Wrong country format! Try again." ,  "error" )
   }
 };
 
