@@ -23,6 +23,7 @@ our app was crashing. We later found [Timezonedb  API](https://timezonedb.com/) 
 * **[Olubanke](https://github.com/Olubanke)** 
 * **[Vivyanne](https://github.com/Vivyanne-504)** 
 * **[Whayasay](https://github.com/Whayasay392)** 
+* **[Tomly](https://github.com/Tomlytm)**
 * **[Ahmad](https://github.com/Ahma-dev)** 
 
 ## Acknowledgement 
