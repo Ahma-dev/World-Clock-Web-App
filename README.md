@@ -27,6 +27,7 @@ our app was crashing. We later found [Timezonedb  API](https://timezonedb.com/) 
 
 ## Acknowledgement 
 [jQuery autocomplete Plugin](http://xdsoft.net/jqplugins/autocomplete)
+
 [Mutmainah](https://github.com/mutmainaho) - Pointed out my lapses as the team lead, i really appreciate it. 
 
 
