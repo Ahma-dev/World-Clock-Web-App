@@ -6,7 +6,7 @@ This project is to enable users to generate time for any city/timezone of their 
 
 ## Thought Process
   [Timezonedb  API](https://timezonedb.com/) was used to generate all available timezones, when the user request for any timezones which is in the list of the available timezones returned, 
-  a request is sent to the [API](https://timezonedb.com/) which returns an object containing needed time data including current time, country tiemzone abbreviation amongst others. 
+  a request is sent to the [API](https://timezonedb.com/) which returns an object containing needed time data including current time, country, timezone abbreviation amongst others. 
   this data generated is then parsed to desired format and displayedd to the user.
 
 ## Issues faced while completing this task
