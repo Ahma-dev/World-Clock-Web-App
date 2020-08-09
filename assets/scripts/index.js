@@ -146,7 +146,7 @@ class UpdateTime {
 
   updateHourHandler() {
     this.hour++;
-    if (hour > 12) {
+    if (hour >= 12) {
       this.hour = 1;
     }
     this.hourDOM.textContent = this.hour.pad(2);
@@ -154,7 +154,7 @@ class UpdateTime {
 
   updateMinHandler() {
     this.min++;
-    if (this.min > 60) {
+    if (this.min >= 60) {
       this.min = 1;
       this.hour++;
     }
