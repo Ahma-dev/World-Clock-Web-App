@@ -143,14 +143,14 @@ class UpdateTime {
 
   updateSecHandler() {
     this.sec++;
-     
+
     if (this.sec >= 60 && !adjustedMin) {
       this.sec = 1;
       this.min++;
       this.updateMin()
       this.minDOM.textContent = this.min.pad(2);
       adjustedMin = true
-      clearInterval(this.secInterval); 
+      clearInterval(this.secInterval);
     }
   }
 
@@ -193,7 +193,7 @@ class EventListener {
     });
   }
 
-  
+
 
   static searchInputHandler(event, EventListener) {
     // calls searchIconHandler when 'Enter' key is pressed
@@ -273,13 +273,13 @@ const generateTimezoneData = (timezone) => {
 const validateUserInput = (userInput) => {
   if (availableTimezones.includes(userInput)) {
     if (addedTimeList.hasOwnProperty(userInput)) {
-      alert("Country already added :)");
+      swal ( "Oops!" ,  "Country already added! Try again." ,  "error" )
       return;
     }
     console.log(userInput);
     generateTimezoneData(userInput); //parse in country code
   } else {
-    alert("Country format wrong!");
+      swal ( "Oops!" ,  "Wrong country format! Try again." ,  "error" )
   }
 };
 
